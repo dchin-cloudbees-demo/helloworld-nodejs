@@ -1,8 +1,10 @@
 pipeline {
-  kubernetes {
-    label 'nodejs-app-pod-2'
-    yamlFile 'nodejs-pod.yaml'
-  }  
+  agent{    
+    kubernetes {
+      label 'nodejs-app-pod-2'
+      yamlFile 'nodejs-pod.yaml'
+    }
+  }
   options { 
     buildDiscarder(logRotator(numToKeepStr: '5'))
     skipDefaultCheckout true
