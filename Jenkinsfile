@@ -11,7 +11,9 @@ pipeline {
       }
     }
     stage('David stage') {
-      echo 'David was here!'
+      steps {
+        echo 'David was here!'
+      }
     }
   }
 }
