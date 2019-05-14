@@ -3,7 +3,7 @@ pipeline {
   options { 
     buildDiscarder(logRotator(numToKeepStr: '2'))
     skipDefaultCheckout true
-  }  
+  } 
   stages {
     stage('Test') {
       steps {
@@ -14,11 +14,23 @@ pipeline {
         }
       }
     }
+    
     stage('David stage') {
       steps {
         checkout scm
         echo 'David was here!'
       }
     }
+    
+    stage('Build and Push Image') {
+      when {
+         beforeAgent true
+         branch 'master'
+      }
+      steps {
+         echo "TODO - build and push image"
+      }
+    }
+    
   }
 }
